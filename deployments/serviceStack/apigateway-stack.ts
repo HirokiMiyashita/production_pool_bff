@@ -28,7 +28,7 @@ export class ApiStack extends Stack {
   constructor(scope: Construct, id: string, props: ApiProps) {
     super(scope, id, props);
     this.restApi = new RestApi(this, "production-pool-bff", {
-      restApiName: `${props.stackNameSuffix}`,
+      restApiName: `bff-${props.stackNameSuffix}`,
       description: "priduction_pool_bff by CDK",
       deployOptions: {
         stageName: props.stage,

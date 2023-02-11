@@ -33,9 +33,9 @@ export class LambdaStack extends Stack {
     const parsedJson = props.secretJson;
     const lambda = new NodejsFunction(
       this,
-      `${props.name}-${props.stackNameSuffix}`,
+      `bff-${props.name}-${props.stackNameSuffix}`,
       {
-        functionName: `${props.name}-${props.stackNameSuffix}`,
+        functionName: `bff-${props.name}-${props.stackNameSuffix}`,
         entry: `./src/action/${props.name}.ts`,
         handler: "handler",
         memorySize: 256,
@@ -68,7 +68,7 @@ export class LambdaStack extends Stack {
       });
 
       lambda.role?.attachInlinePolicy(
-        new IAM.Policy(this, `LambdaRole-${props.name}`, {
+        new IAM.Policy(this, `LambdaRole-bff-${props.name}`, {
           statements: [lambdaPolicy],
         })
       );
