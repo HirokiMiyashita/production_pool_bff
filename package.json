@@ -1,7 +1,7 @@
 {
-  "name": "production_pool_bff",
+  "name": "production_pool_backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "productionPoolBackEnd用Repositry",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-cdk/aws-apigateway": "^1.192.0",
-    "@aws-cdk/aws-lambda": "^1.192.0"
+    "aws-cdk-lib": "^2.64.0",
+    "constructs": "^10.1.247",
+    "pg": "^8.9.0",
+    "ts-node": "^10.9.1",
+    "typeorm": "^0.3.12",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "@types/pg": "^8.6.6"
   }
 }
