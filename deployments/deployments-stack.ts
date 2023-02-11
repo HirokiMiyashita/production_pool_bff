@@ -17,7 +17,7 @@ const createApp = async (lambdaJson: any): Promise<cdk.App> => {
   cdk.Tags.of(app).add("Maiking", "miyashita-hiroki");
   cdk.Tags.of(app).add("Sys-group", "production-pool-backend");
 
-  const lambda = new LambdaStack(app, `lambda-${STACK_NAME_SUFFIX}`, {
+  const lambda = new LambdaStack(app, `lambda-bff-${STACK_NAME_SUFFIX}`, {
     // vpc: VPC,
     env:
       STAGE === "local"
@@ -30,7 +30,7 @@ const createApp = async (lambdaJson: any): Promise<cdk.App> => {
     securityGroup: SECURITY_GROUP_ID,
   });
 
-  const apiGateway = new ApiStack(app, `api-${STACK_NAME_SUFFIX}`, {
+  const apiGateway = new ApiStack(app, `api-bff-${STACK_NAME_SUFFIX}`, {
     stage: STAGE,
     stackNameSuffix: STACK_NAME_SUFFIX,
     lambdas: lambda.lambdas,
