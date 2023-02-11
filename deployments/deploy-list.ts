@@ -1,7 +1,7 @@
 export const deploylist: DeploySetting[] = [
   {
-    name: "test",
-    urls: ["test"],
+    name: "bff_test",
+    urls: ["bff_test"],
     auth: false,
     method: "GET",
     required: {},
