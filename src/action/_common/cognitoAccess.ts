@@ -9,7 +9,7 @@ import * as AmazonCognitoIdentity from "amazon-cognito-identity-js";
 interface signUpProps {
   email: string;
   password: string;
-  userPoolId: string;
+  userPoolId?: string;
 }
 
 export const createCognitoUser = async (
@@ -52,7 +52,7 @@ export const createCognitoUser = async (
 
 export const signUp = (event: signUpProps) => {
   const poolData = {
-    UserPoolId: event.userPoolId,
+    UserPoolId: "ap-northeast-1_mOgcJakUe",
     ClientId: "gou0d50er22te9jkccn664cak",
   };
   var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
