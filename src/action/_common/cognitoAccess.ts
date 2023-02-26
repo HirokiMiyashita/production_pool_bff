@@ -21,7 +21,7 @@ export const createCognitoUser =
     try {
       const userCommandOutput = await cognito.adminCreateUser({
         UserPoolId: 'ap-northeast-1_mOgcJakUe',
-        Username: 'hirokixyzrr@gmail.com',
+        Username: 'hirokixyzrr',
         MessageAction: 'SUPPRESS',
         UserAttributes: [
           {
