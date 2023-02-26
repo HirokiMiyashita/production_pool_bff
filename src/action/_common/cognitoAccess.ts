@@ -23,6 +23,7 @@ export const createCognitoUser =
         UserPoolId: "ap-northeast-1_mOgcJakUe",
         MessageAction: "SUPPRESS",
         Username: "hirokixyzrr@gmail.com",
+        TemporaryPassword: "111AAAaaa",
         UserAttributes: [
           {
             Name: "email",
