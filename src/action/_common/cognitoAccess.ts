@@ -12,24 +12,23 @@ interface signUpProps {
   userPoolId?: string;
 }
 
-export const createCognitoUser = async (
-  userPoolId: string,
-  email: string,
-  password: string
-): Promise<AdminCreateUserCommandOutput> => {
+export const createCognitoUser = async (): // userPoolId: string,
+// email: string,
+// password: string
+Promise<AdminCreateUserCommandOutput> => {
   const cognito = new CognitoIdentityProvider({
     region: process.env.AWS_REGION,
   });
 
   try {
     const userCommandOutput = await cognito.adminCreateUser({
-      UserPoolId: userPoolId,
+      UserPoolId: "ap-northeast-1_mOgcJakUe",
       MessageAction: "SUPRESS",
-      Username: email,
+      Username: "hirokixyzrr@gmail.com",
       UserAttributes: [
         {
           Name: "emal",
-          Value: email,
+          Value: "hirokixyzrr@gmail.com",
         },
         {
           Name: "email_verified",
@@ -39,9 +38,9 @@ export const createCognitoUser = async (
     });
 
     await cognito.adminSetUserPassword({
-      UserPoolId: userPoolId,
+      UserPoolId: "ap-northeast-1_mOgcJakUe",
       Username: userCommandOutput.User?.Username,
-      Password: password,
+      Password: "111AAAaaa",
       Permanent: true,
     });
     return userCommandOutput;
