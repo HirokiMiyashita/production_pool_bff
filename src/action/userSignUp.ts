@@ -12,7 +12,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     });
   } catch (error) {
     return apiResponse({
-      statusCode: 200,
+      statusCode: 500,
       body: JSON.stringify(error),
     });
   }
