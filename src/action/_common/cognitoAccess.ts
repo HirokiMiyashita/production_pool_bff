@@ -62,6 +62,6 @@ export const signUp = (event: signUpProps) => {
       alert(err.message);
       return;
     }
-    return result?.user;
+    return result;
   });
 };

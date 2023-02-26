@@ -4,6 +4,7 @@ import { signUp } from "./_common/cognitoAccess";
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   const result = await signUp(event.body);
+  console.debug(result);
 
   return apiResponse({
     statusCode: 200,
