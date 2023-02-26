@@ -5,7 +5,8 @@ import { createCognitoUser, signUp } from "./_common/cognitoAccess";
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   try {
-    const result = createCognitoUser();
+    const result = await createCognitoUser();
+    console.debug(result);
     return apiResponse({
       statusCode: 200,
       body: JSON.stringify(result),
