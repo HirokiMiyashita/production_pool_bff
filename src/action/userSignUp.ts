@@ -4,9 +4,6 @@ import { apiResponse } from "./_common/apiResponse";
 import { signUp } from "./_common/cognitoAccess";
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
-  const result = await signUp(event.body);
-  console.debug(result);
-
   const cognito = new CognitoIdentityProvider({
     region: process.env.AWS_REGION,
   });
