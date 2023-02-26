@@ -14,13 +14,23 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   };
   // var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-  cognito.signUp(poolData, function (err, data) {
-    console.error("サインアップに失敗しました", err);
-    console.debug("サインアップに失敗しました", data);
-  });
-
-  return apiResponse({
-    statusCode: 200,
-    body: "JSON.stringify(result)",
-  });
+  try {
+    const result = await cognito.signUp(poolData);
+    console.debug(result);
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "ユーザーの登録が完了しました" }),
+    };
+  } catch (err) {
+    return {
+      statusCode: err.statusCode || 500,
+      body: JSON.stringify({ message: err.message }),
+    };
+  }
 };
+
+//   return apiResponse({
+//     statusCode: 200,
+//     body: "JSON.stringify(result)",
+//   });
+// };
