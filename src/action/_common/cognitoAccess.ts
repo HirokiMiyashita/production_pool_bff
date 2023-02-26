@@ -48,24 +48,24 @@ export const createCognitoUser =
     }
   };
 
-// export const signUp = (event: signUpProps) => {
-//   const cognito = new CognitoIdentityProvider({
-//     region: process.env.AWS_REGION,
-//   });
-//   const poolData = {
-//     ClientId: 'gou0d50er22te9jkccn664cak',
-//     Username: 'hirokixyzrr@gmail.com',
-//     Password: '111AAAaaa',
-//   };
-//   // var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+export const signUp = () => {
+  const cognito = new CognitoIdentityProvider({
+    region: process.env.AWS_REGION,
+  });
+  const poolData = {
+    ClientId: 'gou0d50er22te9jkccn664cak',
+    Username: 'hirokixyzrr@gmail.com',
+    Password: '111AAAaaa',
+  };
+  // var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-//   cognito.signUp(poolData, function (err, data) {
-//     if (err) {
-//       console.error('サインアップに失敗しました', data);
-//       return err;
-//     } else {
-//       console.debug('サインアップに失敗しました', data);
-//       return data;
-//     }
-//   });
-// };
+  cognito.signUp(poolData, function (err, data) {
+    if (err) {
+      console.error('サインアップに失敗しました', data);
+      return err;
+    } else {
+      console.debug('サインアップに失敗しました', data);
+      return data;
+    }
+  });
+};

@@ -1,11 +1,11 @@
 // import { CognitoIdentityProvider } from "@aws-sdk/client-cognito-identity-provider";
 import { APIGatewayEvent, Context } from "aws-lambda";
 import { apiResponse } from "./_common/apiResponse";
-import { createCognitoUser } from "./_common/cognitoAccess";
+import { createCognitoUser, signUp } from "./_common/cognitoAccess";
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   try {
-    const result = await createCognitoUser();
+    const result = await signUp();
     console.debug(result);
     return apiResponse({
       statusCode: 200,
