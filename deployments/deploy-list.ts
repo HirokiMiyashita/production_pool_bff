@@ -6,6 +6,13 @@ export const deploylist: DeploySetting[] = [
     method: "GET",
     required: {},
   },
+  {
+    name: "userSignUp",
+    urls: ["userSignUp"],
+    auth: false,
+    method: "POST",
+    required: {},
+  },
 ];
 
 export interface Keys {
