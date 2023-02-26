@@ -11,6 +11,9 @@ export const deploylist: DeploySetting[] = [
     urls: ["userSignUp"],
     auth: false,
     method: "POST",
+    lambdaRole: {
+      action: ["cognito-idp:AdminCreateUser"],
+    },
     required: {},
   },
 ];
