@@ -14,7 +14,8 @@ export const deploylist: DeploySetting[] = [
     lambdaRole: {
       actions: [
         "cognito-idp:AdminCreateUser",
-        "cognito-idp:AdminSetUserPassword"
+        "cognito-idp:AdminSetUserPassword",
+        "ses:SendEmail"
       ],
       resources: ["*"],
     },
