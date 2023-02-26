@@ -51,17 +51,21 @@ export const createCognitoUser = async (
 };
 
 export const signUp = (event: signUpProps) => {
+  const cognito = new CognitoIdentityProvider({
+    region: process.env.AWS_REGION,
+  });
   const poolData = {
-    UserPoolId: "ap-northeast-1_mOgcJakUe",
     ClientId: "gou0d50er22te9jkccn664cak",
+    Username: "hirokixyzrr@gmail.com",
+    Password: "111AAAaaa",
   };
-  var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+  // var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-  userPool.signUp(event.email, event.password, [], [], function (err, result) {
+  cognito.signUp(poolData, function (err, data) {
     if (err) {
-      alert(err.message);
-      return;
+      console.error("サインアップに失敗しました", data);
+    } else {
+      console.debug("サインアップに失敗しました", data);
     }
-    return result;
   });
 };
