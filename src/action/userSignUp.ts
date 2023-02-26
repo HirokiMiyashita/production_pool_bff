@@ -15,13 +15,8 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   // var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
   cognito.signUp(poolData, function (err, data) {
-    if (err) {
-      console.error("サインアップに失敗しました", data);
-      return err;
-    } else {
-      console.debug("サインアップに失敗しました", data);
-      return data;
-    }
+    console.error("サインアップに失敗しました", err);
+    console.debug("サインアップに失敗しました", data);
   });
 
   return apiResponse({
