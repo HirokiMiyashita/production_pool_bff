@@ -48,7 +48,7 @@ export const createCognitoUser =
     }
   };
 
-export const signUp = () => {
+export const signUp = async(): Promise<AdminCreateUserCommandOutput> => {
   const cognito = new CognitoIdentityProvider({
     region: process.env.AWS_REGION,
   });
@@ -59,13 +59,6 @@ export const signUp = () => {
   };
   // var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-  cognito.signUp(poolData, function (err, data) {
-    if (err) {
-      console.error('サインアップに失敗しました', data);
-      return err;
-    } else {
-      console.debug('サインアップに失敗しました', data);
-      return data;
-    }
-  });
+  const userCommandOutput = await cognito.signUp(poolData);
+  return userCommandOutput
 };
