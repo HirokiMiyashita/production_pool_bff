@@ -64,8 +64,10 @@ export const signUp = (event: signUpProps) => {
   cognito.signUp(poolData, function (err, data) {
     if (err) {
       console.error("サインアップに失敗しました", data);
+      return err;
     } else {
       console.debug("サインアップに失敗しました", data);
+      return data;
     }
   });
 };
