@@ -12,7 +12,8 @@ export const deploylist: DeploySetting[] = [
     auth: false,
     method: "POST",
     lambdaRole: {
-      action: ["cognito-idp:AdminCreateUser"],
+      actions: ["cognito-idp:AdminCreateUser"],
+      resourse: ["*"],
     },
     required: {},
   },
