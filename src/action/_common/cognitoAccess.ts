@@ -27,7 +27,7 @@ Promise<AdminCreateUserCommandOutput> => {
       Username: "hirokixyzrr@gmail.com",
       UserAttributes: [
         {
-          Name: "emal",
+          Name: "email",
           Value: "hirokixyzrr@gmail.com",
         },
         {
