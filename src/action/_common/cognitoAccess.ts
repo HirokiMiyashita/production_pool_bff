@@ -54,7 +54,7 @@ export const signUp = async(): Promise<AdminCreateUserCommandOutput> => {
   });
   const poolData = {
     ClientId: 'gou0d50er22te9jkccn664cak',
-    Username: 'hirokixyzrr@gmail.com',
+    Username: 'poolappmail@gmail.com',
     Password: '111AAAaaa',
   };
   // var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
