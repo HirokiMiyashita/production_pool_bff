@@ -1,12 +1,12 @@
 import { CfnOutput, Stack, StackProps } from "aws-cdk-lib";
 import {
-  //   CognitoUserPoolsAuthorizer,
+  CognitoUserPoolsAuthorizer,
   Cors,
   LambdaIntegration,
   RestApi,
 } from "aws-cdk-lib/aws-apigateway";
 import { ServicePrincipal } from "aws-cdk-lib/aws-iam";
-// import { UserPool } from "aws-cdk-lib/aws-cognito";
+import { UserPool } from "aws-cdk-lib/aws-cognito";
 import { Construct } from "constructs";
 import { DeploySetting } from "../deploy-list";
 
@@ -42,17 +42,21 @@ export class ApiStack extends Stack {
     });
     new CfnOutput(this, "OutputApiUrl", { value: this.restApi.url! });
     //Cognitoへのアクセスに関する処理
-    // if (props.isUseCognito) {
-    //   const userPool = UserPool.fromUserPoolArn(this, "userPool", "arn名");
-    //   this.cognitoAuthorizer = new CognitoUserPoolsAuthorizer(
-    //     this,
-    //     "cognitoAuthorizer",
-    //     {
-    //       authorizerName: "CognitoAuthorizer",
-    //       cognitoUserPools: [userPool],
-    //     }
-    //   );
-    // }
+    if (props.isUseCognito) {
+      const userPool = UserPool.fromUserPoolArn(
+        this,
+        "pool-app",
+        "arn:aws:cognito-idp:ap-northeast-1:465983741560:userpool/ap-northeast-1_mOgcJakUe"
+      );
+      this.cognitoAuthorizer = new CognitoUserPoolsAuthorizer(
+        this,
+        "cognitoAuthorizer",
+        {
+          authorizerName: "CognitoAuthorizer",
+          cognitoUserPools: [userPool],
+        }
+      );
+    }
   }
   deploy(props: ApiProps) {
     // NOTE:なんのthisやろ？
@@ -75,7 +79,7 @@ export class ApiStack extends Stack {
       validateRequestParameters: props.setting.required ? true : false,
     };
     // TODO:BackendではCognitoを使用したいため後に削除
-    // if(props.isUseCognito) cognitoSwitch.authorizer = this.cognitoAuthorizer
+    if (props.isUseCognito) cognitoSwitch.authorizer = this.cognitoAuthorizer;
     resorce.addMethod(
       props.setting.method,
       new LambdaIntegration(stackDevideFunction),
